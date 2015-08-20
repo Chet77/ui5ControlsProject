@@ -6,18 +6,17 @@
 
 		<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
 				id="sap-ui-bootstrap"
-				data-sap-ui-libs="sap.m, sap.suite.ui.commons"
+				data-sap-ui-libs="sap.m"
 				data-sap-ui-theme="sap_bluecrystal"
 				data-sap-ui-xx-bindingSyntax="complex"
 				data-sap-ui-appCacheBuster="./">
 		</script>
-		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 
 		<script>
 		$.sap.registerModulePath("ui5ControlsProject", "./");
 		$.sap.require("ui5ControlsProject.js.CITApp");
 		var citApp = new CITApp("application", "XML", "content", "main", "error.html",true);
-		
+
 		</script>
 
 	</head>

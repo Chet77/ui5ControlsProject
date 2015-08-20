@@ -25,8 +25,10 @@ sap.ui.controller("application.master.mView", {
 				citApp.getNavigation().toDetailPage("application.detail.feedInputDemoPage", data);
 				break;
 			case "002" :
+				citApp.getNavigation().toDetailPage("application.detail.responsiveFormExample", data);
 				break;
 			case "003" :
+				citApp.getNavigation().toDetailPage("application.detail.responsiveGridExample", data);
 				break;
 			case "004" :
 				break;

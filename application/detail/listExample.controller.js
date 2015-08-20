@@ -3,7 +3,7 @@ sap.ui.controller("application.detail.listExample", {
 	onInit: function() {
 		this.getView().setDisplayBlock(true);
 		responsiveExampleController = this;
-		this.onLoadData();
+		this.loadData();
   },
 
 	onItemPress : function (evt) {
@@ -19,7 +19,7 @@ sap.ui.controller("application.detail.listExample", {
 		console.log("do something for that particular item");
 	},
 
-	onLoadData : function () {
+	loadData : function () {
 		var exampleList = {
 		  data : [
 		    {

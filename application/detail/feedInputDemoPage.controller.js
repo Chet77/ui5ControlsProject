@@ -41,20 +41,20 @@ sap.ui.controller("application.detail.feedInputDemoPage", {
 //	onExit: function() {
 //
 //	}
-	
+
 	onBeforeShow : function(evt){
 		var oFeedInputs = {
 				entries : [
 				    {author:"Cole", picURL:"images/MaleE1.png", type:"Reply", dateAdded:"10 Apr 2015 17:16:44", text:"This control could be used as 'comments section' in UI5 projects"},
 				    {author:"Sarah", picURL:"images/FemaleE2.png", type:"Reply", dateAdded:"10 Apr 2015 12:41:57", text:"This control could be used as 'comments section' in UI5 projects"},
 				    {author:"Jones", picURL:"images/MaleE2.png", type:"Reply", dateAdded:"10 Apr 2015 07:16:56", text:"This control could be used as 'comments section' in UI5 projects"},
-				]	
+				]
 			};
 		// feed entries model
 		oFeedDataModel = new sap.ui.model.json.JSONModel(oFeedInputs);
 		feedInputController.getView().setModel(oFeedDataModel);
 	},
-	
+
 	submitFeed : function(evt){
 	    var oFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({style: "medium"});
 	    var oDate = new Date();

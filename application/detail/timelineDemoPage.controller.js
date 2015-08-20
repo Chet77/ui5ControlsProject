@@ -39,7 +39,7 @@ sap.ui.controller("application.detail.timelineDemoPage", {
 //	onExit: function() {
 //
 //	}
-	
+
 	onBeforeShow : function(evt){
 		var arrAction1 = [{text: "Waiting for a reply"}, {text: "Customer not reachable"}, {text: "Email sent"}];
 		var arrAction2 = [{text: "No action"}, {text: "Sent from another plant"}];
@@ -53,16 +53,16 @@ sap.ui.controller("application.detail.timelineDemoPage", {
 		// time-line model
 		oTimeLineModel = new sap.ui.model.json.JSONModel(data);
 		timelineController.getView().setModel(oTimeLineModel);
-		
+
 		var filter = {
 			data : [
 			  {key:"id1", text:"Action1"},
 			  {key:"id2", text:"Action2"},
 			  {key:"id3", text:"Action3"}
 			]
-		};		
+		};
 		//filer model
 		oTLFilterModel = new sap.ui.model.json.JSONModel(filter);
-		sap.ui.getCore().setModel(oTLFilterModel);		
+		sap.ui.getCore().setModel(oTLFilterModel);
 	}
 });

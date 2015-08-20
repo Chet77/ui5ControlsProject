@@ -1,0 +1,27 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="application.detail.feedInputDemoPage" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Feed Input">
+		<content>
+			<FeedInput
+				post="submitFeed"
+				icon="images/FemaleE1.png"
+				class="feedInputStyle">
+			</FeedInput>
+			<List
+			showSeperators="Inner"
+			items="{/entries}">
+				<FeedListItem
+					sender = "{author}"						
+					info = "{type}"
+					timestamp = "{dateAdded}"
+					text = "{text}"
+					senderPress = ""
+					icon = "{picURL}"
+					iconPress = "" 
+					iconDensityAware = "">					
+				</FeedListItem>				
+			</List>
+			
+		</content>
+	</Page>
+</core:View>

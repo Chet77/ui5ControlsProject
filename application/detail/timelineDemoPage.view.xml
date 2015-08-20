@@ -1,0 +1,31 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.suite.ui.commons" xmlns:m="sap.m"
+		controllerName="application.detail.timelineDemoPage" xmlns:html="http://www.w3.org/1999/xhtml">
+	<m:Page title="Timeline">	
+		<Timeline
+			showHeaderBar="true"
+			width="30%"
+			content="{/results}">
+			<content>
+				<TimelineItem
+					dateTime="{path:'Date', formatter:'Formatter.checkdate'}"
+					userName="{Agent}"
+					title="{Comment}"
+					icon="sap-icon://notes">
+						<embeddedControl>
+							<m:List 
+								headerText="Actions"
+								items="{actions}">
+								<m:items>
+									<m:StandardListItem 
+										title="{text}"
+										class="lineHeight">
+									</m:StandardListItem>
+								</m:items>																
+							</m:List>
+						</embeddedControl>
+				</TimelineItem>
+			</content>
+		
+		</Timeline>	
+	</m:Page>
+</core:View>

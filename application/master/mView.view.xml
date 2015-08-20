@@ -1,0 +1,25 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="application.master.mView" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Master View">
+		<content>
+			<List 
+				id="mViewList"
+				items="{
+					path:'masterListModel>/data',
+					sorter:'masterListModel>itemNo'
+				}">
+				<headerToolbar>
+					
+				</headerToolbar>
+				<items>
+					<StandardListItem
+						type="Navigation"
+						title="{masterListModel>title}"
+						description="{masterListModel>description}"
+						press="demoSelected">	
+					</StandardListItem>
+				</items>				
+			</List>
+		</content>
+	</Page>
+</core:View>

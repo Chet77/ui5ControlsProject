@@ -38,6 +38,12 @@ sap.ui.controller("application.master.mView", {
 			case "006" :
 				citApp.getNavigation().toDetailPage("application.detail.listExample", data);
 				break;
+			case "007" :
+				citApp.getNavigation().toDetailPage("application.detail.facetFilterExample", data);
+				break;
+			case "008" :
+				citApp.getNavigation().toDetailPage("application.detail.valueStateDemoPage", data);
+				break;
 			default :
 		}
 	}

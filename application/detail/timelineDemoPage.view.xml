@@ -1,31 +1,60 @@
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.suite.ui.commons" xmlns:m="sap.m"
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns="sap.m"
 		controllerName="application.detail.timelineDemoPage" xmlns:html="http://www.w3.org/1999/xhtml">
-	<m:Page title="Timeline">	
-		<Timeline
-			showHeaderBar="true"
-			width="30%"
-			content="{/results}">
-			<content>
-				<TimelineItem
-					dateTime="{path:'Date', formatter:'Formatter.checkdate'}"
-					userName="{Agent}"
-					title="{Comment}"
-					icon="sap-icon://notes">
-						<embeddedControl>
-							<m:List 
-								headerText="Actions"
-								items="{actions}">
-								<m:items>
-									<m:StandardListItem 
-										title="{text}"
-										class="lineHeight">
-									</m:StandardListItem>
-								</m:items>																
-							</m:List>
-						</embeddedControl>
-				</TimelineItem>
-			</content>
-		
-		</Timeline>	
-	</m:Page>
+	<Page title="Timeline">
+		<content>
+			<!-- Best practice notes -->
+			<Panel expandable="true" expanded="true">
+				<headerToolbar>
+					<Toolbar height="3rem">
+						<Text text="Best Practice"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<VBox>
+						<items>
+							<Text text="--Add Text---"/>
+							<Text text="--Add Text---"/>
+							<Text text="--Add Text---"/>
+							<Text text="--Add Text---"/>
+							<Text text="--Add Text---"/>
+						</items>
+					</VBox>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" class="listExample">
+				<headerToolbar>
+					<Toolbar height="3rem">
+						<Text text="Example"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<suite:Timeline
+						showHeaderBar="true"
+						width="30%"
+						content="{/results}">
+						<suite:content>
+							<suite:TimelineItem
+								dateTime="{path:'Date', formatter:'Formatter.checkdate'}"
+								userName="{Agent}"
+								title="{Comment}"
+								icon="sap-icon://notes">
+									<suite:embeddedControl>
+										<List
+											headerText="Actions"
+											items="{actions}">
+											<items>
+												<StandardListItem
+													title="{text}"
+													class="lineHeight">
+												</StandardListItem>
+											</items>
+										</List>
+									</suite:embeddedControl>
+							</suite:TimelineItem>
+						</suite:content>
+					</suite:Timeline>
+				</content>
+			</Panel>
+		</content>
+	</Page>
 </core:View>

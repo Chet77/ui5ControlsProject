@@ -1,0 +1,87 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="application.detail.facetFilterExample" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Facet Filter">
+		<content>
+			<!-- Best practice notes -->
+			<Panel expandable="true" expanded="true">
+				<headerToolbar>
+					<Toolbar height="3rem">
+						<Text text="Best Practice"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<VBox>
+						<items>
+							<Text text="--Add Text---"/>
+							<Text text="--Add Text---"/>
+							<Text text="--Add Text---"/>
+							<Text text="--Add Text---"/>
+							<Text text="--Add Text---"/>
+						</items>
+					</VBox>
+				</content>
+			</Panel>
+			<!-- Example -->
+			<Panel expandable="true" expanded="true" class="listExample">
+				<headerToolbar>
+					<Toolbar height="3rem">
+						<Text text="Example"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+          <FacetFilter
+            id="filter"
+            type="Simple"
+            showPersonalization="true"
+            showReset="true"
+            reset="handleFacetFilterReset"
+            lists="{filterModel>/filters}">
+            <lists>
+              <FacetFilterList
+                title="{filterModel>type}"
+                key="{filterModel>key}"
+                multiselect="true"
+                listClose="handleListClose"
+                items="{filterModel>values}">
+                <items>
+                  <FacetFilterItem
+                    text="{filterModel>text}"
+                    key="{filterModel>key}"
+                    count="{filterModel>count}"/>
+                </items>
+              </FacetFilterList>
+            </lists>
+          </FacetFilter>
+          <Table id="myTable"
+            items="{dataModel>/users}">
+            <headerToolbar>
+              <Toolbar>
+                <Title text="Data" level="H2"/>
+              </Toolbar>
+            </headerToolbar>
+            <columns>
+              <Column width="10em">
+                <Text text="Date"/>
+              </Column>
+              <Column width="10em">
+                <Text text="Comment"/>
+              </Column>
+              <Column width="10em">
+                <Text text="User"/>
+              </Column>
+            </columns>
+            <items>
+              <ColumnListItem>
+                <cells>
+									<Text text="{dataModel>Date}" />
+									<Text text="{dataModel>Comment}" />
+									<Text text="{dataModel>Agent}" />
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</core:View>

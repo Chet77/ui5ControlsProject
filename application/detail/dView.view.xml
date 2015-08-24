@@ -2,7 +2,7 @@
 		controllerName="application.detail.dView" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="Details View">
 		<content>
-	
+
 		</content>
 	</Page>
 </core:View>

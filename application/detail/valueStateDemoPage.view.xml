@@ -1,0 +1,51 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="application.detail.valueStateDemoPage" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="List Example">
+		<content>
+			<!-- Best practice notes -->
+			<Panel expandable="true" expanded="true">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Best Practice"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<VBox>
+						<items>
+							<Text text="--Add Text---"/>
+              <Text text="--Add Text---"/>
+              <Text text="--Add Text---"/>
+              <Text text="--Add Text---"/>
+              <Text text="--Add Text---"/>
+              <Text text="--Add Text---"/>
+						</items>
+					</VBox>
+				</content>
+			</Panel>
+
+			<!-- Example 1-->
+			<Panel expandable="true" expanded="false" class="listExample">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Example 1"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+
+				</content>
+			</Panel>
+
+			<!-- Example 2-->
+			<Panel expandable="true" expanded="false" class="listExample">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Example 2"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+
+				</content>
+			</Panel>
+    </content>
+  </Page>
+</core:View>

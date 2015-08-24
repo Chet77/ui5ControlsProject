@@ -21,7 +21,7 @@
 					</VBox>
 				</content>
 			</Panel>
-			<Panel expandable="true" expanded="true" class="listExample">
+			<Panel expandable="true" expanded="false" class="listExample">
 				<headerToolbar>
 					<Toolbar height="3rem">
 						<Text text="Example"/>

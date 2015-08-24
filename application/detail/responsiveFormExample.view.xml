@@ -31,7 +31,7 @@
 			</Panel>
 
 			<!-- Attributes -->
-			<Panel expandable="true" expanded="false">
+			<Panel expandable="true" expanded="false" class="listExample">
 				<headerToolbar>
       		<Toolbar height="3rem">
         		<Text text="Attributes"/>
@@ -51,7 +51,7 @@
 			</Panel>
 
 			<!-- Examples-->
-			<Panel expandable="true" expanded="true">
+			<Panel expandable="true" expanded="true" class="listExample">
 				<headerToolbar>
       		<Toolbar height="3rem">
         		<Text text="Examples"/>

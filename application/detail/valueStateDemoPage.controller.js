@@ -29,6 +29,7 @@ sap.ui.controller("application.detail.valueStateDemoPage", {
 	},
 
 	handleValidateForm: function(evt){
+		//create an array of input fields
 		var inputs = [
 	    valueStateController.getView().byId("Input1"),
 	    valueStateController.getView().byId("Input2"),

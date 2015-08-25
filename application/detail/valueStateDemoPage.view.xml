@@ -1,4 +1,4 @@
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
 	controllerName="application.detail.valueStateDemoPage" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="List Example">
 		<content>
@@ -31,21 +31,42 @@
       		</Toolbar>
     		</headerToolbar>
 				<content>
-
+					<form:SimpleForm editable="true" layout="ResponsiveGridLayout"
+						labelSpanL="3"
+						labelSpanM="3"
+						emptySpanL="4"
+						emptySpanM="4"
+						columnsL="1"
+						columnsM="1">
+						<form:content>
+							<core:Title text="Simple Form to Validate on Button press"/>
+							<Label text="Name"/>
+							<Input id="Input1" value="{contact>/Name}" placeholder="First Name"/>
+							<Label text="Designation"/>
+							<Select id="InputDD"
+			          autoAdjustWidth="true"
+			          items="{contact>/designation}">
+			          <core:Item key="{contact>text}" text="{contact>text}" />
+			        </Select>
+							<Label text="Address line"/>
+							<Input id="Input2" value="{contact>/houseNo}" placeholder="House No.">
+								<layoutData>
+        					<layout:GridData span="L2 M2 S12"></layout:GridData>
+    						</layoutData>
+							</Input>
+							<Input id="Input3" value="{contact>/street}" placeholder="Street"/>
+						</form:content>
+					</form:SimpleForm>
 				</content>
 			</Panel>
 
-			<!-- Example 2-->
-			<Panel expandable="true" expanded="false" class="listExample">
-				<headerToolbar>
-      		<Toolbar height="3rem">
-        		<Text text="Example 2"/>
-      		</Toolbar>
-    		</headerToolbar>
-				<content>
-
-				</content>
-			</Panel>
     </content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button id="validate" text="Validate" type="Emphasized" press="handleValidateForm" />
+				</contentLeft>
+			</Bar>
+		</footer>
   </Page>
 </core:View>

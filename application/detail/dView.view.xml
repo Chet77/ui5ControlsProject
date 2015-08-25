@@ -1,8 +1,10 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
 		controllerName="application.detail.dView" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="Details View">
-		<content>
-
-		</content>
-	</Page>
+		<MessagePage
+			showHeader="true"
+			title="Detail View"
+			text="SAP UI5 Controls Demo"
+			description="Select an item from the Master View"
+			>
+		</MessagePage>
 </core:View>

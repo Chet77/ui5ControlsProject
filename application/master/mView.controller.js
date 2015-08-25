@@ -31,17 +31,15 @@ sap.ui.controller("application.master.mView", {
 				citApp.getNavigation().toDetailPage("application.detail.responsiveGridExample", data);
 				break;
 			case "004" :
-				break;
-			case "005" :
 				citApp.getNavigation().toDetailPage("application.detail.timelineDemoPage", data);
 				break;
-			case "006" :
+			case "005" :
 				citApp.getNavigation().toDetailPage("application.detail.listExample", data);
 				break;
-			case "007" :
+			case "006" :
 				citApp.getNavigation().toDetailPage("application.detail.facetFilterExample", data);
 				break;
-			case "008" :
+			case "007" :
 				citApp.getNavigation().toDetailPage("application.detail.valueStateDemoPage", data);
 				break;
 			default :

@@ -42,6 +42,9 @@ sap.ui.controller("application.master.mView", {
 			case "007" :
 				citApp.getNavigation().toDetailPage("application.detail.valueStateDemoPage", data);
 				break;
+			case "008" :
+				citApp.getNavigation().toDetailPage("application.detail.modelBindingDemo", data);
+				break;
 			default :
 		}
 	}

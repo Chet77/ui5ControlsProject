@@ -1,0 +1,144 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	controllerName="application.detail.modelBindingDemo" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Model Binding Example">
+		<content>
+			<!-- Best practice notes -->
+			<Panel expandable="true" expanded="true">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Best Practice"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<VBox>
+						<items>
+							<Text text="--Add Text---"/>
+              <Text text="--Add Text---"/>
+              <Text text="--Add Text---"/>
+              <Text text="--Add Text---"/>
+              <Text text="--Add Text---"/>
+						</items>
+					</VBox>
+				</content>
+			</Panel>
+
+			<!-- Example 1-->
+			<Panel expandable="true" expanded="false" class="listExample">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Example 1"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+          <Table id="myTable1"
+            items="{basicRowModel>/row}">
+            <headerToolbar>
+              <Toolbar>
+                <Title text="Basic Model Binding" level="H2"/>
+              </Toolbar>
+            </headerToolbar>
+            <columns>
+              <Column width="10em">
+                <Text text="Name"/>
+              </Column>
+              <Column width="10em">
+                <Text text="Role"/>
+              </Column>
+              <Column width="10em">
+                <Text text="Company"/>
+              </Column>
+            </columns>
+            <items>
+              <ColumnListItem>
+                <cells>
+									<Text text="{basicRowModel>name}" />
+									<Text text="{basicRowModel>role}" />
+									<Text text="{basicRowModel>company}" />
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+				</content>
+			</Panel>
+
+      <!-- Example 2-->
+      <Panel expandable="true" expanded="false" class="listExample">
+        <headerToolbar>
+          <Toolbar height="3rem">
+            <Text text="Example 2"/>
+          </Toolbar>
+        </headerToolbar>
+        <content>
+          <Table id="myTable2"
+            items="{complexRowModel>/row}">
+            <headerToolbar>
+              <Toolbar>
+                <Title text="Complex Model Binding" level="H2"/>
+              </Toolbar>
+            </headerToolbar>
+            <columns>
+              <Column width="10em">
+                <Text text="Name"/>
+              </Column>
+              <Column width="10em">
+                <Text text="Role"/>
+              </Column>
+              <Column width="10em">
+                <Text text="Company"/>
+              </Column>
+            </columns>
+            <items>
+              <ColumnListItem>
+                <cells>
+                  <Text text="{complexRowModel>name}" />
+                  <Select id="dropdown1" autoAdjustWidth="true" items="{complexRowModel>role}">
+                    <core:Item key="{complexRowModel>roleName}" text="{complexRowModel>roleName}" />
+                  </Select>
+                  <Select id="dropdown2" autoAdjustWidth="true" items="{complexRowModel>company}">
+                    <core:Item key="{complexRowModel>companyName}" text="{complexRowModel>companyName}" />
+                  </Select>
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+        </content>
+      </Panel>
+
+      <!-- Example 3
+      <Panel expandable="true" expanded="false" class="listExample">
+        <headerToolbar>
+          <Toolbar height="3rem">
+            <Text text="Example 2"/>
+          </Toolbar>
+        </headerToolbar>
+        <content>
+          <Table id="myTable3"
+            items="{complexRowModel>/row}">
+            <headerToolbar>
+              <Toolbar>
+                <Title text="Hyper-Complex Model Binding" level="H2"/>
+              </Toolbar>
+            </headerToolbar>
+            <columns>
+              <Column width="10em">
+                <Text text="Name"/>
+              </Column>
+              <Column width="10em">
+                <Text text="Role and Company"/>
+              </Column>
+            </columns>
+            <items>
+              <ColumnListItem>
+                <cells>
+                  <Text text="{complexRowModel>name}" />
+                  <List></List>
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+        </content>
+      </Panel>-->
+
+    </content>
+  </Page>
+</core:View>

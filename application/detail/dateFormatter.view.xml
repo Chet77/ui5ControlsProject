@@ -42,7 +42,7 @@ var oDate = new Date();
 var sNewDate = DateFormatter.format(oDate, "dd-MMM-YY HH:mm");
 	              	</html:code>
 								</html:pre>
-								<Text text="Use case 2. Imagine that we're using sNewDate from above but may have been returned from a backend service call
+								<Text text="Use case 2. We're using sNewDate from above but may have been returned from a backend service call
 									and oNewDate will be a JavaScript Date object. Pass in a second argument of the format of the string."/>
 								<html:pre>
   								<html:code>

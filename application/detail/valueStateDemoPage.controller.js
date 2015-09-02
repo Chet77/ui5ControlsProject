@@ -21,7 +21,7 @@ sap.ui.controller("application.detail.valueStateDemoPage", {
 			designation: [{text: "Developer"}, {text: "Manager"}, {text: "Consultant"}],
 			houseNo: "",
 			street: ""
-		}
+		};
 
 		var oModel = new sap.ui.model.json.JSONModel(contact);
 		sap.ui.getCore().setModel(oModel, "contact");

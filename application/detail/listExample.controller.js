@@ -6,8 +6,13 @@ sap.ui.controller("application.detail.listExample", {
 		this.loadData();
   },
 
-	onItemPress : function (evt) {
+	onListItemSingleSelectMasterPress : function (evt) {
 		var selectedItem = evt.getSource().getSelectedItem().getBindingContext("exampleList").getObject();
+		console.log("selected: " + selectedItem.title);
+	},
+
+	onListItemPress : function (evt) {
+		var selectedItem = evt.getSource().getBindingContext("exampleList").getObject();
 		console.log("selected: " + selectedItem.title);
 	},
 

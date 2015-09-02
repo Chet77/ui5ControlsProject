@@ -16,10 +16,11 @@ sap.ui.controller("application.main", {
 					{itemNo:"005", title:"List Demo", description:"This control could be used to list items in an array in a  UI5 projects", dateCreated:"20/08/2015", developer:"Mark"},
 					{itemNo:"006", title:"Facet Filter Demo", description:"This control could be used to apply filters on sap.m List & Table controls", dateCreated:"21/08/2015", developer:"Chet"},
 					{itemNo:"007", title:"Value State Demo", description:"This control is used to change the state of sap.m Input & Select controls", dateCreated:"25/08/2015", developer:"Chet"},
-					{itemNo:"008", title:"Model Binding Demo", description:"This example depicts how to do model binding (complex) in XML views", dateCreated:"26/08/2015", developer:"Chet"}
+					{itemNo:"008", title:"Model Binding Demo", description:"This example depicts how to do model binding (complex) in XML views", dateCreated:"26/08/2015", developer:"Chet"},
+					{itemNo:"009", title:"Date Formatting", description:"This utility shows how to do date formatting and parsing", dateCreated:"01/09/2015", developer:"Mark"}
 			]
 		};
-		// create an OdataModel for master list
+		// create a JSONModel for master list
 		var oMasterModel = new sap.ui.model.json.JSONModel(oList);
 		sap.ui.getCore().setModel(oMasterModel, "masterListModel");
 	}

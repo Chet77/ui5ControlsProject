@@ -14,8 +14,9 @@
 					<VBox>
 						<items>
 							<Text text="This project provides a best practice example on how to create a list using the mobile control. The type of list item can be swapped in and out for any of the other types."/>
-							<Text text="Example 1 shows a list being bound to an array in the model"/>
-							<Text text="Example 2 shows a static list with hard coded options, because sometimes you need that."/>
+							<Text text="Example 1 shows a list being bound to an array in the model with the single select master mode set. Use this when in a master-detail scenario."/>
+							<Text text="Example 2 shows a list being bound to an array in the model with the press event set on the item and the type set to Active. Use this when you want a simple bound list displayed."/>
+							<Text text="Example 3 shows a static list with hard coded options, because sometimes you need that."/>
 							<Text text="Dos and dont's:"/>
 							<Text text="Do set the select event on the list. This will provide the context for the selected item in the controller."/>
 							<Text text="Do set the mode to SingleSelectMaster, this will give you the highlighting on the selected item."/>
@@ -33,7 +34,7 @@
       		</Toolbar>
     		</headerToolbar>
 				<content>
-					<List items="{exampleList>/data}" noDataText="No items" select="onItemPress" mode="SingleSelectMaster">
+					<List items="{exampleList>/data}" noDataText="No items" select="onListItemSingleSelectMasterPress" mode="SingleSelectMaster">
             <items>
               <ObjectListItem title="{exampleList>title}" number="{exampleList>number}">
               </ObjectListItem>
@@ -47,6 +48,23 @@
 				<headerToolbar>
       		<Toolbar height="3rem">
         		<Text text="Example 2"/>
+      		</Toolbar>
+    		</headerToolbar>
+				<content>
+					<List items="{exampleList>/data}" noDataText="No items">
+            <items>
+              <ObjectListItem title="{exampleList>title}" number="{exampleList>number}" press="onListItemPress" type="Active">
+              </ObjectListItem>
+            </items>
+          </List>
+				</content>
+			</Panel>
+
+			<!-- Example 3-->
+			<Panel expandable="true" expanded="false" class="listExample">
+				<headerToolbar>
+      		<Toolbar height="3rem">
+        		<Text text="Example 3"/>
       		</Toolbar>
     		</headerToolbar>
 				<content>

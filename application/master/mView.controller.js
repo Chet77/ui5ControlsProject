@@ -45,6 +45,9 @@ sap.ui.controller("application.master.mView", {
 			case "008" :
 				citApp.getNavigation().toDetailPage("application.detail.modelBindingDemo", data);
 				break;
+			case "009" :
+				citApp.getNavigation().toDetailPage("application.detail.dateFormatter", data);
+				break;
 			default :
 		}
 	}

@@ -1,0 +1,58 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="application.detail.dateFormatter" xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page title="Date Formatter Example">
+  		<content>
+
+  			<!-- Best practice notes -->
+  			<Panel expandable="true" expanded="true">
+  				<headerToolbar>
+        		<Toolbar height="3rem">
+          		<Text text="Best Practice"/>
+        		</Toolbar>
+      		</headerToolbar>
+  				<content>
+  					<VBox>
+  						<items>
+  							<Text text="This project provides a best practice example on how to parse and format Dates."/>
+  							<Text text="Dates will some times come from the backend as strings and all different shapes and sizes In this case,
+                   if the date returned from the backend isn't in the format that you want to display it in, then it will need to be parsed."/>
+                <Text text="Likewise, if there is a date object returned from the backend then this will need formatting into a more user
+									 friendly display."/>
+                <Text text="We have written a handy wrapper object around the SAP UI5 functionality to make it easier to remember and use."/>
+  						</items>
+  					</VBox>
+  				</content>
+  			</Panel>
+
+        <!-- Best practice notes -->
+  			<Panel expandable="true" expanded="true">
+  				<headerToolbar>
+        		<Toolbar height="3rem">
+          		<Text text="Use case"/>
+        		</Toolbar>
+      		</headerToolbar>
+  				<content>
+  					<VBox>
+  						<items>
+								<Text text="Use case 1. Imagine that a JavaScript Date object has been returned from a backend service call
+									and sNewDate will be a string representation of your date. Pass in a second argument of the format to be displayed."/>
+								<html:pre>
+	  							<html:code>
+var oDate = new Date();
+var sNewDate = DateFormatter.format(oDate, "dd-MMM-YY HH:mm");
+	              	</html:code>
+								</html:pre>
+								<Text text="Use case 2. Imagine that we're using sNewDate from above but may have been returned from a backend service call
+									and oNewDate will be a JavaScript Date object. Pass in a second argument of the format of the string."/>
+								<html:pre>
+  								<html:code>
+var oNewDate = DateFormatter.parse(sNewDate, "dd-MMM-YY HH:mm");
+                	</html:code>
+								</html:pre>
+  						</items>
+  					</VBox>
+  				</content>
+  			</Panel>
+      </content>
+    </Page>
+</core:View>

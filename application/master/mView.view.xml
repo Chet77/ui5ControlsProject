@@ -2,23 +2,19 @@
 		controllerName="application.master.mView" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="Master View">
 		<content>
-			<List 
+			<List
 				id="mViewList"
-				items="{
-					path:'masterListModel>/data',
-					sorter:'masterListModel>itemNo'
-				}">
-				<headerToolbar>
-					
-				</headerToolbar>
+				items="{path:'masterListModel>/data', sorter:'masterListModel>itemNo'}"
+				select="demoSelected"
+				mode="SingleSelectMaster">
+				<headerToolbar></headerToolbar>
 				<items>
 					<StandardListItem
 						type="Navigation"
 						title="{masterListModel>title}"
-						description="{masterListModel>description}"
-						press="demoSelected">	
+						description="{masterListModel>description}">
 					</StandardListItem>
-				</items>				
+				</items>
 			</List>
 		</content>
 	</Page>

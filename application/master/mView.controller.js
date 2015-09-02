@@ -19,7 +19,7 @@ sap.ui.controller("application.master.mView", {
 	},
 
 	demoSelected : function(evt){
-		var data = evt.getSource().getBindingContext("masterListModel").getObject();
+		var data = evt.getSource().getSelectedItem().getBindingContext("masterListModel").getObject();
 		switch(data.itemNo){
 			case "001" :
 				citApp.getNavigation().toDetailPage("application.detail.feedInputDemoPage", data);

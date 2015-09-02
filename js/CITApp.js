@@ -1,19 +1,16 @@
 function CITApp(sLocalResources, sViewType, sPlaceAt, sAppViewName, sErrorUri, bIsMobile) {
-	//CS : Currently making changes as per RS PAC baseline and UI5 BP developments
-	//TODO : include changes from WARBs
-	this.version = "1.4";
+	this.version = "1.5";
 	this.sLocalResources = sLocalResources;
 	this.sViewType = sViewType;
 	this.sPlaceAt = sPlaceAt;
 	this.sAppViewName = sAppViewName;
 	this.sErrorUri = sErrorUri;
 	this.bIsMobile = bIsMobile;
-
 	/**
-	 * @param debugMode : String to distinguish whether the application is in debug mode or not.
-	 * This is used for when switching between minifed and non-minifed files
+	 * @param debugMode : String to distinguish whether the application is
+	 * in debug mode or not. This is used for when switching between minifed
+	 * and non-minifed files
 	 */
-
 	this.debugMode = "false";
 	this.logLevel = "error";
 	this.splitApp = null;
@@ -22,19 +19,16 @@ function CITApp(sLocalResources, sViewType, sPlaceAt, sAppViewName, sErrorUri, b
 	this.messageManager = null;
 	this.navigation = null;
 	this.EAOCollection = [];
-	
 	//initialise system properties
 	this.bRetrieveSysProp = false;
 	this.sSysPropUrl = "";
 	this.oSysProp = null;
-	
+
 	var that = this;
 	var functionName = this.init;
-
 	setTimeout(function () {
 		functionName(that);
 	}, 0);
-
 	return this;
 }
 
@@ -49,14 +43,10 @@ CITApp.prototype.init = function (citApp) {
 				citApp.navigation = new Navigation(citApp.sViewType);
 				citApp.checkForLogLevel();
 				citApp.loadMainView();
-				$(document).ready(function(){
-					citApp.initialiseMessageManager();
-				});
 			} catch (e) {
 				citApp.handleInitError(e, citApp);
 			}
 		});
-		
 	} catch (e) {
 		citApp.handleInitError(e, citApp);
 	}
@@ -65,17 +55,16 @@ CITApp.prototype.init = function (citApp) {
 /**
  * Function to load application main view
  * This method takes the value from CITApp initialise method
- * and set the main view with the splitApp created for the 
- * application (cater for error scenario as well) 
+ * and set the main view with the splitApp created for the
+ * application (cater for error scenario as well)
  * @class CITApp
- * 
+ *
  * @param none
  * @return none
  * @version {@link CITApp}
  */
 CITApp.prototype.loadMainView = function () {
 	sap.ui.localResources(this.sLocalResources);
-
 	try {
 		var viewName = this.sLocalResources + "." + this.sAppViewName;
 		var view = sap.ui.view({viewName:viewName, type:"JS"});
@@ -88,15 +77,14 @@ CITApp.prototype.loadMainView = function () {
 		Logger.error(e.message);
 		Logger.error(e.stack);
 		throw e;
-	} 
+	}
 };
 
 /**
- * Function to initialise Message Manager class, a position variable could 
- * be passed to set the position of message box on application layout 
- *   
+ * Function to initialise Message Manager class, a position variable could
+ * be passed to set the position of message box on application layout
  * @class CITApp
- * 
+ *
  * @param {String} sPosition - Position on the Layout
  * @return {Boolean} bInitialisedMessageManager -  Boolean to verify if the Message Manager is initialised
  * @version {@link CITApp}
@@ -115,6 +103,15 @@ CITApp.prototype.initialiseMessageManager = function(sPosition){
 	return bInitialisedMessageManager;
 };
 
+/**
+ * Function to validate logLevel parameter from URI, this method sets the
+ * log level to Logger.js
+ * @class CITApp
+ *
+ * @param none
+ * @return none
+ * @version {@link CITApp}
+ */
 CITApp.prototype.checkForLogLevel = function () {
 	var logLevel = $.sap.getUriParameters().get("logLevel");
 	if(logLevel !== null && logLevel !== "info" && logLevel !== "warn" && logLevel !== "debug") {
@@ -128,11 +125,11 @@ CITApp.prototype.checkForLogLevel = function () {
 /**
  * Function to load all files for the project from bootstrap.js
  * (decides to load minified or non-minified version)
- * This method iterate over the nameSpaces & register the module 
- * path, iterate over the CSS array & include style sheets and 
- * iterate over the JS array & include JS files
- *   
+ * This method iterate over the nameSpaces & register the module
+ * path, iterate over the CSS array & include style sheets and
+ * iterate over the JS array & include JS files *
  * @class CITApp
+ *
  * @param none
  * @return none
  * @version {@link CITApp}
@@ -141,23 +138,23 @@ CITApp.prototype.loadBootstrap = function () {
 	try {
 		$.sap.registerModulePath("js", "js");
 		$.sap.require("js.bootstrap");
-
 		if (bootstrap !== undefined) {
 			//call the method to check whether the application is debug mode
-			if (bootstrap.debugMode==="forcedTrue") { 
+			if (bootstrap.debugMode==="forcedTrue") {
 				this.debugMode = true; // DEV Mode when always non-minified versions of file is needed.
 			}else if(bootstrap.debugMode==="true"){
 				this.checkForDebugMode();// UAT when URL may influence having minified version or not.
 			}else if(bootstrap.debugMode==="false"){
 				this.debugMode = false;// Production where always minified version is used.
 			}
-			
 			//check the system properties
-			if (bootstrap.retrieveSysProp !== undefined && (bootstrap.retrieveSysProp === true || bootstrap.retrieveSysProp === "true") && bootstrap.retrieveSysProp !== undefined && bootstrap.retrieveSysProp !== "") {
-				this.bRetrieveSysProp = true;
-				this.sSysPropUrl = bootstrap.sysPropUrl;
+			if (bootstrap.retrieveSysProp !== undefined
+				&& (bootstrap.retrieveSysProp === true || bootstrap.retrieveSysProp === "true")
+				&& bootstrap.retrieveSysProp !== undefined
+				&& bootstrap.retrieveSysProp !== "") {
+					this.bRetrieveSysProp = true;
+					this.sSysPropUrl = bootstrap.sysPropUrl;
 			}
-
 			//iterate over the nameSpaces & register the module path
 			if (bootstrap.namespaces !== undefined) {
 				for (var i = 0; i < bootstrap.namespaces.length; i++) {
@@ -175,7 +172,6 @@ CITApp.prototype.loadBootstrap = function () {
 					$.sap.includeStyleSheet(item);
 				}
 			}
-
 			//iterate over the JS array & include JS files
 			if (bootstrap.jsFiles !== undefined) {
 				for (var i = 0; i < bootstrap.jsFiles.length; i++) {
@@ -187,7 +183,6 @@ CITApp.prototype.loadBootstrap = function () {
 					}
 				}
 			}
-
 			//Grab the endpoints from the bootstrap and add to a model
 			if(bootstrap.eaoEndpoints !== undefined){
 				sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(bootstrap.eaoEndpoints),"eaoBootstrap");
@@ -199,10 +194,10 @@ CITApp.prototype.loadBootstrap = function () {
 };
 
 /**
- * Function to check if the "debug" parameter is in the URL & whether 
- * it is set to true or false
- *   
+ * Function to check if the "debug" parameter is in the URL & whether
+ * it is set to true or false *
  * @class CITApp
+ *
  * @param none
  * @return {Boolean} debugMode -  Boolean to verify is debug mode ON?
  * @version {@link CITApp}
@@ -222,14 +217,13 @@ CITApp.prototype.checkForDebugMode = function () {
 };
 
 /**
- * Function to initialise EAO class, with passed in credentials and 
- * service URL. This method return a boolean based on successful 
- * initialisation 
- *   
+ * Function to initialise EAO class, with passed in credentials and
+ * service URL. This method return a boolean based on successful
+ * initialisation
  * @class CITApp
- * 
+ *
  * @param {String} sServiceUrl - Service URL string
- * @param {String} bJson - Boolean value for choosing JSON (true/false) 
+ * @param {String} bJson - Boolean value for choosing JSON (true/false)
  * @param {String} sUsername - For accessing Gateway services User Name
  * @param {String} sPassword - For accessing Gateway services User Password
  * @return {Boolean} bInitialisedEAO -  Boolean to verify if the EAO is initialised
@@ -245,24 +239,21 @@ CITApp.prototype.initialiseEAO = function (sServiceUrl, bJson, sUsername, sPassw
 		Logger.error(e.stack);
 		Logger.error(e.message);
 	}
-
 	return bInitialisedEAO;
 };
 
-
 /**
- * Author Shambles
- * 
- * function to get the EAO params from the boot strap and add the newly created model to a local structure.
- * eao can they be referenced using a friendly name i.e.
- * 
+ * Function to get the EAO params from the boot strap and add the newly created
+ * model to a local structure.
+ * @class CITApp
+ *
  * @param name
- * @returns
+ * @returns {object} returnedEAO - EAO object {} initialised in EAO.js
+ * @version {@link CITApp}
  */
 CITApp.prototype.getEAO = function (name) {
 	var eaoCollection = this.EAOCollection;
 	var oSysProp = this.oSysProp;
-	
 	//check if the EAO has already been loaded locally
 	var eaoExists = false;
 	var returnedEAO = null;
@@ -272,25 +263,23 @@ CITApp.prototype.getEAO = function (name) {
 			returnedEAO = eaoCollection[i].eao;
 		}
 	});
-
-	//EAO doesn't exist so we create this and bind to local model array 
+	//EAO doesn't exist so we create this and bind to local model array
 	if(!eaoExists){
 		var eaoBootstrap = sap.ui.getCore().getModel('eaoBootstrap').getData();
 		//Add the model to eaoCollection and set back to the core.
 		$(eaoBootstrap).each(function(x){
 			if(eaoBootstrap[x].name === name){
 				var eaoModel = eaoBootstrap[x];
-				
 				//check to see if the sysProp value is set to true
 				//if so, check the sysProp object for CIT App
 				//the name attribute needs to match the system property name
 				if (eaoModel.sysProp !== undefined && eaoModel.sysProp) {
 					var sysPropValue = oSysProp[eaoModel.name];
-					returnedEAO = new EAO(sysPropValue, eaoBootstrap[x].bJson, null, null);
+					returnedEAO = new EAO(sysPropValue, eaoBootstrap[x].bJson, null, null, this.bIsMobile);
 					eaoModel.eao = returnedEAO;
 					eaoCollection.push(eaoModel);
 				} else {
-					returnedEAO = new EAO(eaoBootstrap[x].URI, eaoBootstrap[x].bJson, null, null);
+					returnedEAO = new EAO(eaoBootstrap[x].URI, eaoBootstrap[x].bJson, null, null, this.bIsMobile);
 					eaoModel.eao = returnedEAO;
 					eaoCollection.push(eaoModel);
 				}
@@ -298,18 +287,27 @@ CITApp.prototype.getEAO = function (name) {
 		});
 	}
 	return returnedEAO;
-
-};
-CITApp.prototype.getMessageManager = function () {
-	return this.messageManager;
 };
 
+/**
+ * Function to get the navigation object model to a local structure.
+ * @class CITApp
+ *
+ * @param name
+ * @returns {object} navigation - Navigation object {} initialised in Navigation.js
+ * @version {@link CITApp}
+ */
 CITApp.prototype.getNavigation = function () {
 	return this.navigation;
 };
 
 /**
  * Function to handle the error thrown when initialising the application.
+ * @class CITApp
+ *
+ * @param name
+ * @returns {object} returnedEAO - EAO object {} initialised in EAO.js
+ * @version {@link CITApp}
  */
 CITApp.prototype.handleInitError = function (e, citApp) {
 	try {
@@ -320,7 +318,7 @@ CITApp.prototype.handleInitError = function (e, citApp) {
 			alert("Error message: " + e.message);
 			alert("Error stack: " + e.stack);
 		}
-		
+
 		if (localStorage !== undefined && localStorage.setItem !== undefined) {
 			localStorage.setItem("errorMessage", e.message);
 			localStorage.setItem("errorStack", e.stack);
@@ -329,20 +327,25 @@ CITApp.prototype.handleInitError = function (e, citApp) {
 			document.body.style.height = "100%";
 			document.getElementsByTagName("html")[0].className = "";
 		} else {
-			alert("A fatal error occurred when loading the application. Message: " + e1.message);
+			alert("A fatal error occurred when loading the application. Message: " + e.message);
 		}
-	} catch (e1) {
+	} catch (exception) {
 		alert("[E3270959] There was a fatal error when loading the application.");
 		alert("[E3870959] Original error: " + e.message);
-		alert("[E3870959] Resulting error: " + e1.message);
+		alert("[E3870959] Resulting error: " + exception.message);
 	}
 };
 
 /**
  * Function to handle call to retrieve system properties
+ * @class CITApp
+ *
+ * @param {object} citApp - object of CITApp class
+ * @param {function} fnCallback - passed callback method
+ * @returns {object} returnedEAO - EAO Object{} initialised in EAO.js
+ * @version {@link CITApp}
  */
 CITApp.prototype.retrieveSystemProperties = function (citApp, fnCallback) {
-	
 	if (!this.bRetrieveSysProp) {
 		fnCallback();
 	}else{
@@ -357,19 +360,16 @@ CITApp.prototype.retrieveSystemProperties = function (citApp, fnCallback) {
 					fnCallback();
 				}
 			} else {
-				//response wasn't success
+				//error
 				var e = {};
 				e.message = "Failed response when retrieving system properties";
 				e.stack = "";
 				citApp.handleInitError(e, citApp);
 			}
-			//if the service doesn't return it as an object then try to create as an object?? Purely for ABAP
 		}).fail(function(jqXHR, textStatus, errorThrown) {
 			citApp.handleInitError(errorThrown, citApp);
 		});
 	}
-	
-
 };
 
 CITApp.prototype.getSystemProperties = function () {
